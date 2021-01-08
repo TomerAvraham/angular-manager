@@ -1,9 +1,9 @@
 const { Schema, model } = require('mongoose')
 
-const Group = new Schema({
+const GroupSchema = new Schema({
     name: String
 })
 
-const GroupModel = model('group', Group)
+const Group = model('group', GroupSchema)
 
-module.exports = GroupModel
+module.exports = Group

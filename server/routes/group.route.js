@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const GroupModel = require("../models/group.model");
+const Group = require("../models/group.model");
 
 router.get("/all", async (req, res) => {
   try {
-    const groups = await GroupModel.find();
+    const groups = await Group.find();
     res.status(200).send({ groups });
   } catch (error) {
     res.status(500).send({ error });
@@ -13,7 +13,7 @@ router.get("/all", async (req, res) => {
 router.post("/add", async (req, res) => {
   try {
     const { name } = req.body;
-    const newGroup = new GroupModel({
+    const newGroup = new Group({
       name,
     });
     await newGroup.save();

@@ -9,6 +9,7 @@ app.use(express.json());
 connectToMongoDB();
 
 app.use("/group", require("./routes/group.route"));
+app.use("/meet", require("./routes/meet.route"));
 
 const PORT = 5000;
 app.listen(PORT, console.log(`Running on port ${PORT}`));

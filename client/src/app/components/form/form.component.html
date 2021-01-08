@@ -1,0 +1,36 @@
+<form [formGroup]="meetForm" (ngSubmit)="addNewMeet()" class="form__container">
+  <div class="input__container">
+    <label for="description">description</label>
+    <input
+      formControlName="description"
+      id="description"
+      placeholder="text...."
+      type="text"
+    />
+  </div>
+  <div class="input__container">
+    <label for="room">room</label>
+    <input
+      formControlName="room"
+      type="text"
+      placeholder="room number...."
+      id="room"
+    />
+  </div>
+  <div class="input__container">
+    <label for="start_date">from:</label>
+    <input formControlName="start_date" id="start_date" type="datetime-local" />
+  </div>
+  <div class="input__container">
+    <label for="end_date">To:</label>
+    <input formControlName="end_date" id="end_date" type="datetime-local" />
+  </div>
+  <select formControlName="group" (change)="groupService.setGroupMeets($event)">
+    <option value=""></option>
+    <option [value]="group._id" *ngFor="let group of groupService.groups">
+      {{ group.name }}
+    </option>
+  </select>
+  <button type="submit">Add</button>
+  <p>{{ meetForm.value | json }}</p>
+</form>
